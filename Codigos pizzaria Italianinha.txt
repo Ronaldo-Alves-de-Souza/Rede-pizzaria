@@ -1,0 +1,517 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main(){
+//VARIAVEL DA DATA
+char data[10];
+int opcaodata=0;
+//VARIAVEL DO COMENTARIO
+char comentario [200], loginincorreto [10];
+//VARIAVEL DOS NOMES DAS PIZZAS ,BEBIDAS E PROMOCAO
+char promocao[150], pizza1 [30],pizza2 [30],pizza3 [30],pizza4 [30];
+char drink1[30],drink2[30],drink3[30],drink4[30];
+//VARIAVEIS DE QUANTIDADE DE ESTOQUE
+int espizza1=0, espizza2=0, espizza3=0, espizza4=0;
+//VARIAVEIS DOS PREÇOS DOS PRODUTOS E PROMOCAO
+float vpromocao;
+float vpizza1=0,vpizza2=0,vpizza3=0,vpizza4=0;
+float vdrink1=0,vdrink2=0,vdrink3=0,vdrink4=0;
+//VARIAVEL DO VALOR DO PEDIDO E FATURAMENTO
+float valorpedido=0, faturamento=0;
+//VARIAVEL DO NUMERO DE PIZZAS VENDIDAS
+int nvpizza1=0,nvpizza2=0,nvpizza3=0,nvpizza4=0;
+//VARIAVEIS DE CONTAS E OPÇÕES DE SWITCH
+int numpedidosfeitos=0,cancelamento=0,totalpizzas=0,opcaoestoque=0,opcaoestoque2=0,opcaoestoque3=0,opcaocomentarios=0;
+fflush(stdin);
+int x=1,i=1,a=1;
+//TELA DE LOGIN E CADASTRO
+  do{
+    printf("\t\t\t**************************\n");
+    printf("\t\t\t*Cadastro de funcionarios*\n");
+    printf("\t\t\t**************************\n\n");
+    printf("\t  Funcionario do caixa\n");
+    printf("\t________________________\n\n\n");
+    char nome1[51],nome2[51];
+    char senha1[9],senha2[9];
+fflush(stdin);
+    printf("Digite o nome de usuario para cadastro: \n");
+     gets(nome1);
+      printf("Digite sua senha de no maximo 8 caracteres para cadastro: \n");
+       gets(senha1);
+
+        printf("Digite o nome de usuario: \n");
+         gets(nome2);
+           printf("Digite sua senha: \n");
+            gets(senha2);
+             if (strcmp(nome2,nome1)&&(senha2,senha1))
+                 {system ("cls");
+                     printf("NOME DE USUARIO OU SENHA INCORRETOS, PRESSIONE ENTER PARA TENTAR NOVAMENTE\n");
+                     gets (loginincorreto);
+                     system ("cls");
+
+                 }else{
+                     system ("cls");
+                 printf("LOGIN EFETUADO COM SUCESSO\n");
+
+    fflush(stdin);
+FILE * arquivo;
+int menu,i=1;
+
+do {
+    //INTERFACE DO MENU
+
+    printf ("*======================================* \n");
+printf ("MENU \n\n");
+printf ("1-NOVO PEDIDO \n");
+printf ("2-CARDAPIO \n");
+printf ("3-CADASTRO DE NOVOS CLIENTES \n");
+printf ("4-ESTOQUE \n");
+printf ("5-RELATORIO \n");
+printf ("6-ELOGIO OU RECLAMACOES \n");
+printf ("7-SAIR \n");
+printf ("*======================================* \n");
+
+fflush(stdin);
+    scanf("%i",&menu);
+    switch(menu){
+    case 1:{
+        //NOVO PEDIDO
+        int opcaopedido;
+        char cliente[30],pedido[30],endereco[100], obs[200];
+        fflush(stdin);
+    system ("cls");
+    printf ("Selecione o pedido principal:\n");
+    printf ("1-");
+    printf ("%s",pizza1);
+    printf(" R$: %2.2f\n",vpizza1);
+    printf ("2-");
+    printf ("%s",pizza2);
+    printf(" R$: %2.2f\n",vpizza2);
+    printf ("3-");
+    printf ("%s",pizza3);
+    printf(" R$: %2.2f\n",vpizza3);
+    printf ("4-");
+    printf ("%s",pizza4);
+    printf(" R$: %2.2f",vpizza4);
+    printf ("\npromocao do dia:");
+    printf (" %s",promocao);
+    printf (" R$: %2.2f",vpromocao);
+    printf ("\n");
+    fflush(stdin);
+    //VAI PEGAR A PIZZA SELECIONADA
+    scanf ("%i",&opcaopedido);
+    switch (opcaopedido){
+    case 1: {nvpizza1 = nvpizza1 + 1;
+            espizza1 = espizza1 - 1;
+    break;}
+    case 2: {nvpizza2 = nvpizza2 + 1;
+            espizza2 = espizza2 - 1;
+    break;}
+    case 3: {nvpizza3 = nvpizza3 + 1;
+             espizza3 = espizza3 - 1;
+    break;}
+    case 4: {nvpizza4 = nvpizza4 + 1;
+            espizza4 = espizza4 -1;
+    break;}
+    }
+    //CADASTRO DA FIXA DO PEDIDO
+    fflush(stdin);
+    printf ("Digite o nome e sobre nome do cliente: ");
+    gets (cliente);
+    printf ("\nDigite a rua e numero do remetente: ");
+    gets (endereco);
+    printf ("\nAlguma alteracao no pedido? ");
+    gets (obs);
+    printf ("\nDigite o valor total a ser pago R$: ");
+    fflush(stdin);
+    //O USUARIO CONFIRMA OU CANCELA O PEDIDO
+    scanf ("%f",&valorpedido);
+    printf ("\n");
+        printf ("1-CONFIRMAR\n2-CANCELAR \n");
+    fflush(stdin);
+    int confirmacao;
+    scanf ("%i",&confirmacao);
+    switch (confirmacao){
+        //SE CONFIRMA A FIXA E GERADA E OS DADOS DA VENDA SÃO ARMAZENADOS
+        case 1: {
+    faturamento = faturamento + valorpedido;
+    numpedidosfeitos = numpedidosfeitos + 1;
+    system ("cls");
+    printf ("FICHA DE PEDIDO:\n");
+    printf ("Remetente do pedido: ");
+    printf ("%s",cliente);
+    printf ("\n");
+    printf ("Endereco do remetente: ");
+    printf ("%s",endereco);
+    printf ("\n");
+    printf ("pedido: ");
+    switch (opcaopedido){
+    case 1:{printf ("%s",pizza1); break;}
+    case 2:{printf ("%s",pizza2); break; }
+    case 3:{printf ("%s",pizza3); break;}
+    case 4:{printf ("%s",pizza4); break;}
+    }
+    printf ("\n");
+    printf ("Observacoes do pedido: ");
+    printf ("%s",obs);
+    printf ("\n");
+    printf ("Valor total a ser pago R$: ");
+    printf ("%2.2f",valorpedido);
+    printf ("\n");
+    printf ("IMPRIMINDO FIXA...");
+    printf ("\n");
+    break;}
+    //SE CANCELA OS DADOS DA COMPRA SÃO CANCELADOS E É ARMAZENADO O CANCELAMENTO
+       case 2: {
+           fflush(stdin);
+       cancelamento = cancelamento + 1;
+       switch (opcaopedido){
+   case 1:{ nvpizza1 = nvpizza1 - 1;
+   espizza1 = espizza1 + 1;
+    break;}
+   case 2:{nvpizza2 = nvpizza2 - 1;
+   espizza2 = espizza2 + 1;
+   break;}
+   case 3:{nvpizza3 = nvpizza3 - 1;
+   espizza3 = espizza3 + 1;
+   break ;}
+   case 4:{nvpizza4 = nvpizza4 - 1;
+   espizza4 = espizza4 + 1;
+   break ;}
+    }
+       system ("cls");
+       break;}
+    }
+    break;};
+      //CARDAPIO E CADASTRO DE PIZZAS E BEBIDAS
+    case 2:{
+        int opcaocardapio;
+
+int cardapio;
+        system ("CLS");
+        printf ("1-EXIBIR CARDAPIO \n");
+        printf ("2-CADASTRAR PIZZAS E BEBIDAS \n");
+        printf ("3-CADASTRAR PRECOS \n");
+        printf ("4-CADASTRAR PROMOCAO DO DIA \n");
+        fflush(stdin);
+        scanf ("%i",&opcaocardapio);
+        system ("cls");
+        switch(opcaocardapio){
+            case 1:{
+                //EXIBE O CARDAPIO
+ printf("*******************************************************************************\n");
+ printf("*  digite 0 numero 1 para consultar cardapio de pizzas                        *\n");
+ printf("*  ____________________________________________________                       *\n");
+ printf("*  digite o numero 2 para consultar o cardapio de bebidas                     *\n");
+ printf("*  ____________________________________________________                       *\n");
+ printf("*  digite o numero 3 para consultar a promocao do dia                         *\n");
+ printf("*******************************************************************************\n");
+ fflush(stdin);
+ scanf("%i",&cardapio);
+ system ("cls");
+
+
+ switch(cardapio){
+//MOSTRA AS PIZZAS DO CARDAPIO
+case  1:{fflush(stdin);
+        printf ("%s  ",pizza1);
+        printf("R$: %2.2f\n",vpizza1);
+        printf ("%s  ",pizza2);
+        printf("R$: %2.2f\n",vpizza2);
+        printf ("%s  ",pizza3);
+        printf("R$: %2.2f\n",vpizza3);
+        printf ("%s  ",pizza4);
+        printf("R$: %2.2f\n",vpizza4);
+        break;}
+//MOSTRA AS BEBIDAS DO CARDAPIO
+case 2:{fflush(stdin);
+       printf ("%s  ",drink1);
+       printf("R$: %2.2f\n",vdrink1);
+       printf ("%s  ",drink2);
+       printf("R$: %2.2f\n",vdrink2);
+       printf ("%s  ",drink3);
+       printf("R$: %2.2f\n",vdrink3);
+
+       break;}
+case 3:{printf ("promocao do dia: ");
+        printf ("%s",promocao);
+        printf ("R$:  %2.2f",vpromocao);
+        printf ("\n");
+}
+break;}break;}
+case 2:{
+    //CADASTRA OS SABORES DAS PIZZAS
+    fflush(stdin);
+
+         printf ("Digite o nome da pizza n1: ");
+         gets (pizza1);
+         printf ("\n");
+         printf ("Digite o nome da pizza n2: ");
+         gets (pizza2);
+         printf ("\n");
+         printf ("Digite o nome da pizza n3: ");
+         gets (pizza3);
+         printf ("\n");
+         printf ("Digite o nome da pizza n4: ");
+         gets (pizza4);
+         printf ("\n");
+         printf ("Digite nome da bebida n1: ");
+         gets (drink1);
+         printf ("\n");
+         printf ("Digite nome da bebida n2: ");
+         gets (drink2);
+         printf ("\n");
+         printf ("Digite nome da bebida n3: ");
+         gets (drink3);
+         printf ("\n");
+         system ("cls");
+         break;
+    }
+
+    case 3:{//CADASTRA O VALOR DAS PIZZAS
+        fflush(stdin);
+    printf("Digite o valor da pizza ");
+    printf ("%s R$:",pizza1);
+     scanf(" %f",&vpizza1);
+      printf("\nDigite o valor da pizza ");
+      printf ("%s R$:",pizza2);
+       scanf(" %f",&vpizza2);
+        printf("\nDigite o valor da pizza ");
+        printf ("%s R$:",pizza3);
+         scanf(" %f",&vpizza3);
+          printf("\nDigite o valor da pizza ");
+          printf ("%s R$:",pizza4);
+           scanf(" %f",&vpizza4);
+
+printf("_____________________________________________________________________________________________\n\n");
+    fflush(stdout);
+    fflush(stdin);
+    setbuf(stdin,NULL);
+    //CADASTRA O VALOR DAS BEBIDAS
+printf("\nDigite o valor do(a) ");
+printf ("%s R$:",drink1);
+ scanf(" %f",&vdrink1);
+  printf("\nDigite o valor do(a) ");
+  printf ("%s R$:",drink2);
+   scanf(" %f",&vdrink2);
+printf ("\nDigite o valor do(a) ");
+printf ("%s R$:",drink3);
+ scanf(" %f",&vdrink3);
+   system ("cls");
+    break;}
+    //CADASTRO DE PROMOCAO
+    case 4:{
+        fflush(stdin);
+    printf("Insira a promocao: ");
+    gets (promocao);
+    printf ("\n");
+    printf ("Digite o preco R$:");
+    scanf (" %f",&vpromocao);
+    system ("cls");
+    break;
+    }
+    break;}
+
+    break;
+}fflush(stdin);
+
+        //CADASTRO NOVOS CLIENTES
+    case 3:{
+        system ("CLS");
+         int x;
+    char nome[50],tel[10],end[50];
+    printf("\t\t\tcadastro de clientes\n\n");
+    printf("Digite o nome do cliente\n");
+    fflush(stdin);
+    gets(nome);
+    printf("Digite o numero de telefone do cliente:\n");
+    gets(tel);
+    printf("Digite o endereco do cliente:\n");
+    gets(end);
+    system ("cls");
+    printf ("Nome: %s \n",nome);
+    printf ("Numero de telefone: %s \n",tel);
+    printf ("Endereco: %s \n",end);
+
+    x=(x+1);
+    break;}
+
+    //ESTOQUE
+    case 4:{
+        int a,b,c,d;
+        system ("cls");
+        printf ("ESTOQUE:\n");
+        //EXIBE A QUANTIDADE DE DISCOS DE PIZZA PRESENTES NO ESTOQUE
+    printf ("Quantidade de discos de pizza presente no estoque:\n");
+    printf ("%s",pizza1);
+    printf (" %i",espizza1);
+    printf (" \n");
+    printf ("%s",pizza2);
+    printf (" %i",espizza2);
+    printf (" \n");
+    printf ("%s",pizza3);
+    printf (" %i",espizza3);
+    printf (" \n");
+    printf ("%s",pizza4);
+    printf (" %i",espizza4);
+    printf ("\n1- ATUALIZAR ESTOQUE \n2- VOLTAR\n");
+    fflush(stdin);
+    scanf ("%i",&opcaoestoque);
+    switch (opcaoestoque){
+    case 1:{
+        //OPCAO DE ADICIONAR OU RETIRAR ITENS DO ESTOQUE
+        system ("cls");
+    printf ("1- ADICIONAR ITENS \n2- RETIRAR ITENS\n");
+    fflush(stdin);
+    scanf ("%i",&opcaoestoque2);
+    switch (opcaoestoque2){
+    case 2:{
+        //RETIRAR ITENS DO ESTOQUE
+        fflush(stdin);
+    printf ("Quantas unidades deseja remover de cada item ?\n");
+    printf ("Discos de pizza ");printf ("%s",pizza1);
+    scanf  ("%i",&a);
+    espizza1 = espizza1 - a;
+    printf ("\nAtual: %i",espizza1);
+    printf ("\nDiscos de pizza ");printf (" %s",pizza2);
+    scanf  ("%i",&b);
+    espizza2 = espizza2 - b;
+    printf ("\nAtual: %i",espizza2);
+    printf ("\nDiscos de pizza ");printf (" %s",pizza3);
+    scanf  ("%i",&c);
+    espizza3 = espizza3 - c;
+    printf ("\nAtual: %i",espizza3);
+    printf ("\nDiscos de pizza de ");printf (" %s",pizza4);
+    scanf  ("%i",&d);
+    espizza4 = espizza4 - d;
+    printf ("\nAtual: %i",espizza4);
+    a = espizza1 - a;
+    b = espizza2 - b;
+    c = espizza3 - c;
+    d = espizza4 - d;
+    break;
+    }
+
+    case 1:{
+        //INSERIR ITENS AO ESTOQUE
+    fflush(stdin);
+    printf ("Quantas unidades deseja adicionar de cada item ?\n");
+    printf ("\nDiscos de pizza ");printf ("%s: ",pizza1);
+    scanf  ("%i",&a);
+    espizza1 = espizza1 + a;
+    printf ("Atual: %i\n",espizza1);
+    printf ("\nDiscos de pizza ");printf ("%s: ",pizza2);
+    scanf  ("%i",&b);
+    espizza2 = espizza2 + b;
+    printf ("Atual: %i\n",espizza2);
+    printf ("\nDiscos de pizza ");printf ("%s: ",pizza3);
+    scanf  ("%i",&c);
+    espizza3 = espizza3 + c;
+    printf ("Atual: %i\n",espizza3);
+    printf ("\nDiscos de pizza ");printf ("%s: ",pizza4);
+    scanf  ("%i",&d);
+    espizza4 = espizza4 + d;
+    printf ("Atual: %i\n",espizza4);
+    break;
+    a = espizza1 - a;
+    b = espizza2- b;
+    c = espizza3 - c;
+    d = espizza4 - d;
+    }
+    }
+    }
+    case 2:{system("cls");
+    break;}
+    }
+    break;
+    }
+
+
+    //RELATORIO
+    case 5:{
+        fflush(stdin);
+        system ("cls");
+        //EXIBE TODOS OS DADOS DE VENDAS, CANCELAMENTOS, ETC...
+        printf ("1- CADASTRAR DATA DO DIA \n2- EXIBIR RELATORIO\n");
+        fflush(stdin);
+        scanf ("%i",&opcaodata);
+        switch(opcaodata){
+        case 1:{
+        printf ("Insira a data do dia: \n");
+        fflush(stdin);
+        gets (data);
+        system("cls");
+        }
+        case 2:{
+            fflush(stdin);
+    printf ("%s\n",data);
+    printf ("Receita total de vendas R$: ");
+    printf ("%2.2f",faturamento);
+    printf ("\n");
+    printf ("Quantidade de pedidos feitos: ");
+    printf ("%i",numpedidosfeitos);
+    printf ("\n");
+    printf ("Quantidade de pedidos cancelados: ");
+    printf ("%i",cancelamento);
+    printf ("\n");
+    printf ("Quantidade de pizzas vendidas: ");
+    fflush(stdin);
+    totalpizzas = nvpizza1 + nvpizza2 + nvpizza3 + nvpizza4;
+    printf ("%i",totalpizzas);
+    printf ("\n");
+    printf ("%s",pizza1);printf (" %i",nvpizza1);
+    printf ("\n");
+    printf ("%s",pizza2);printf (" %i",nvpizza2);
+    printf ("\n");
+    printf ("%s",pizza3);printf (" %i",nvpizza3);
+    printf ("\n");
+    printf ("%s",pizza4);printf (" %i",nvpizza4);
+    printf ("\n");
+    break;
+        }
+    break;
+    }
+    break;
+    }
+    //ELOGIOS OU RECLAMAÇÕES
+    case 6:{
+        system("cls");
+        printf ("1- ADICIONAR COMENTARIO \n2- VISUALIZAR EXISTENTES\n");
+        fflush(stdin);
+        scanf("%i",&opcaocomentarios);
+        switch(opcaocomentarios){
+        case 1:{
+            //PEGA O COMENTARIO
+            system("cls");
+            printf("Escreva comentario: ");
+            fflush(stdin);
+            gets(comentario);
+            system ("cls");
+            break;
+        }
+        case 2:{
+            //EXIBE O COMENTARIO
+            system("cls");
+            printf ("comentarios existentes:\n");
+            fflush(stdin);
+            printf ("%s \n",comentario);
+        break;
+        }
+
+        }break;
+      }
+      case 7:{
+          //SAI DO CICLO E VAI PARA A TELA DE LOGIN
+      i++;
+      system ("cls");
+      }
+    }
+   }
+   while(i==1);
+  }
+}
+while (a==1);
+return 0;
+}
+
+
